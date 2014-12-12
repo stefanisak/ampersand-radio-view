@@ -1,7 +1,7 @@
 {
   "name": "ampersand-radio-view",
   "description": "A view module for radio buttons.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": {
     "name": "Mike Hedman",
     "email": "mikehedman@gmail.com"
@@ -12,7 +12,7 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/ampersandjs/ampersand-input-view/issues"
+    "url": "https://github.com/mikehedman/ampersand-radio-view/issues"
   },
   "dependencies": {
     "ampersand-input-view": "^3.1.0",
@@ -24,11 +24,16 @@
     "browserify": "^5.10.1",
     "function-bind": "^1.0.0",
     "jshint": "^2.5.6",
+    "run-browser": "^2.0.0",
     "tap-spec": "^0.2.1",
     "tape": "^2.14.0",
     "tape-run": "^0.3.0"
   },
-  "homepage": "https://github.com/ampersandjs/ampersand-input-view",
+  "homepage": "https://github.com/mikehedman/ampersand-radio-view",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikehedman/ampersand-radio-view.git"
+  },
   "keywords": [
     "forms",
     "ampersand",

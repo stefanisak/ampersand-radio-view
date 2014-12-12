@@ -1,0 +1,45 @@
+{
+  "name": "ampersand-radio-view",
+  "description": "A view module for radio buttons.",
+  "version": "0.0.2",
+  "author": {
+    "name": "Mike Hedman",
+    "email": "mikehedman@gmail.com"
+  },
+  "browserify": {
+    "transform": [
+      "ampersand-version"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/ampersandjs/ampersand-input-view/issues"
+  },
+  "dependencies": {
+    "ampersand-input-view": "^3.1.0",
+    "ampersand-version": "^1.0.1",
+    "ampersand-view": "^7.2.0",
+    "underscore": "^1.7.0"
+  },
+  "devDependencies": {
+    "browserify": "^5.10.1",
+    "function-bind": "^1.0.0",
+    "jshint": "^2.5.6",
+    "tap-spec": "^0.2.1",
+    "tape": "^2.14.0",
+    "tape-run": "^0.3.0"
+  },
+  "homepage": "https://github.com/ampersandjs/ampersand-input-view",
+  "keywords": [
+    "forms",
+    "ampersand",
+    "browser"
+  ],
+  "license": "MIT",
+  "main": "ampersand-radio-view.js",
+  "scripts": {
+    "start": "run-browser test/index.js",
+    "test": "browserify test/index.js | tape-run | tap-spec"
+  },
+  "directories": {},
+  "readme": "ERROR: No README data found!"
+}

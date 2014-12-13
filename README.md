@@ -4,13 +4,9 @@ An extension of [ampersand-input-view](https://github.com/AmpersandJS/ampersand-
 Adds a "text" property for , and "checked" to indicate if the button should be checked at render time.
 
 ## install
-won't work until I get this into npm!
 ```
 npm install ampersand-radio-view
 ```
-until then, you can add the following line directly into the dependencies section of your package.json:
-"ampersand-radio-view": "git://github.com/mikehedman/ampersand-radio-view",
-
 
 ## example
 

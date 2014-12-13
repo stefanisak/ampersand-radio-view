@@ -44,7 +44,5 @@
   "scripts": {
     "start": "run-browser test/index.js",
     "test": "browserify test/index.js | tape-run | tap-spec"
-  },
-  "directories": {},
-  "readme": "ERROR: No README data found!"
+  }
 }

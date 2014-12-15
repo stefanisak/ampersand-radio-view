@@ -1,4 +1,5 @@
-# ampersand-radio-view
+# ampersand-radio-view  ![Build Status](https://api.travis-ci.org/mikehedman/ampersand-radio-view.svg?branch=master)
+
 An extension of [ampersand-input-view](https://github.com/AmpersandJS/ampersand-input-view) to create radio buttons.
 
 Adds a "text" property for , and "checked" to indicate if the button should be checked at render time.

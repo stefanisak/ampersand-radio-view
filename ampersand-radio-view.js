@@ -10,7 +10,8 @@ var OneButton = View.extend({
         text: ['string', true, ''],
         checked: ['boolean', false, false],
         value: ['any', true],
-        name: ['string', true]
+        name: ['string', true],
+        disabled: ['boolean', false, false]
     },
     bindings: {
         'text': {
@@ -31,6 +32,11 @@ var OneButton = View.extend({
             type: 'attribute',
             selector: 'input',
             name: 'name'
+        },
+        'disabled': {
+            type: 'booleanAttribute',
+            selector: 'input',
+            name: 'disabled'
         }
     }
 });
@@ -58,11 +64,12 @@ module.exports = InputView.extend({
 
     render: function () {
         InputView.prototype.render.apply(this);
-        for(var i = 0; i < this.buttons.length; i++) {
+        for(var i = 0; i < this.buttons.length; i++){
             this.renderSubview(new OneButton({
                 text: this.buttons[i].text,
                 value: this.buttons[i].value,
                 checked: this.buttons[i].checked,
+                disabled: this.buttons[i].disabled,
                 name: this.name + '-doNotUseDirectly'
             }), '.radio-buttons');
             if (this.buttons[i].checked) {

@@ -3,7 +3,7 @@ var InputView = require('ampersand-input-view');
 var _ = require('underscore');
 
 //an internally used view that is used to draw each radio button
-var OneButton = View.extend({
+var ButtonView = View.extend({
     template:
         '<div><input type="radio"><span data-hook="text"></span></div>',
     props: {
@@ -55,8 +55,15 @@ module.exports = InputView.extend({
     props: {
         buttons: 'array'
     },
+    
+    ButtonView: ButtonView,
 
-    initialize: function() {
+    initialize: function(opts) {
+        
+        if (opts.buttonView) {
+            this.ButtonView = opts.buttonView;
+        }
+        
         //force the input type to hidden. Doing it here since there is an event on type change
         this.type = 'hidden';
         InputView.prototype.initialize.apply(this);
@@ -65,7 +72,7 @@ module.exports = InputView.extend({
     render: function () {
         InputView.prototype.render.apply(this);
         for(var i = 0; i < this.buttons.length; i++){
-            this.renderSubview(new OneButton({
+            this.renderSubview(new this.ButtonView({
                 text: this.buttons[i].text,
                 value: this.buttons[i].value,
                 checked: this.buttons[i].checked,
@@ -86,3 +93,5 @@ module.exports = InputView.extend({
         this.inputValue = e.target.value;
     }
 });
+
+module.exports.ButtonView = ButtonView;

@@ -1,6 +1,6 @@
 var View = require('ampersand-view');
 var InputView = require('ampersand-input-view');
-var _ = require('underscore');
+var assign = require('lodash.assign');
 
 //an internally used view that is used to draw each radio button
 var ButtonView = View.extend({
@@ -73,18 +73,22 @@ module.exports = InputView.extend({
         InputView.prototype.render.apply(this);
         
         var viewOptions = {
-            text: this.buttons[i].text,
-            value: this.buttons[i].value,
-            checked: this.buttons[i].checked,
-            disabled: this.buttons[i].disabled,
-            name: this.name + '-doNotUseDirectly'
+            name: this.name + '-doNotUseDirectly',
+            checked: false,
+            disabled: false
         };
         
         if (this.collection && this.collection.isCollection) {
             this.renderCollection(this.collection, this._initializeCollectionSubview, '.radio-buttons', viewOptions);
         } else {
             for(var i = 0; i < this.buttons.length; i++) {
-                this.renderSubview(new this.ButtonView(viewOptions), '.radio-buttons');
+                this.renderSubview(new this.ButtonView(assign(viewOptions, {
+                    text: this.buttons[i].text,
+                    value: this.buttons[i].value,
+                    checked: this.buttons[i].checked,
+                    disabled: this.buttons[i].disabled
+                })), '.radio-buttons');
+                
                 if (this.buttons[i].checked) {
                     this.inputValue = this.buttons[i].value;
                 }
@@ -92,7 +96,7 @@ module.exports = InputView.extend({
         }
     },
 
-    events: _.extend({}, InputView.prototype.events, {
+    events: assign({}, InputView.prototype.events, {
         'click input[type=radio]': 'radioClickHandler'
     }),
 

@@ -71,16 +71,23 @@ module.exports = InputView.extend({
 
     render: function () {
         InputView.prototype.render.apply(this);
-        for(var i = 0; i < this.buttons.length; i++){
-            this.renderSubview(new this.ButtonView({
-                text: this.buttons[i].text,
-                value: this.buttons[i].value,
-                checked: this.buttons[i].checked,
-                disabled: this.buttons[i].disabled,
-                name: this.name + '-doNotUseDirectly'
-            }), '.radio-buttons');
-            if (this.buttons[i].checked) {
-                this.inputValue = this.buttons[i].value;
+        
+        var viewOptions = {
+            text: this.buttons[i].text,
+            value: this.buttons[i].value,
+            checked: this.buttons[i].checked,
+            disabled: this.buttons[i].disabled,
+            name: this.name + '-doNotUseDirectly'
+        };
+        
+        if (this.collection && this.collection.isCollection) {
+            this.renderCollection(this.collection, this._initializeCollectionSubview, '.radio-buttons', viewOptions);
+        } else {
+            for(var i = 0; i < this.buttons.length; i++) {
+                this.renderSubview(new this.ButtonView(viewOptions), '.radio-buttons');
+                if (this.buttons[i].checked) {
+                    this.inputValue = this.buttons[i].value;
+                }
             }
         }
     },
@@ -91,6 +98,16 @@ module.exports = InputView.extend({
 
     radioClickHandler: function(e) {
         this.inputValue = e.target.value;
+    },
+    
+    _initializeCollectionSubview: function(config) {
+        var view = new this.ButtonView(config);
+        
+        if (view.checked) {
+            this.inputValue = view.value;
+        }
+        
+        return view;
     }
 });
 

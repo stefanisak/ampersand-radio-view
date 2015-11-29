@@ -60,8 +60,8 @@ module.exports = InputView.extend({
 
     initialize: function(opts) {
         
-        if (opts.buttonView) {
-            this.ButtonView = opts.buttonView;
+        if (opts.ButtonView) {
+            this.ButtonView = opts.ButtonView;
         }
         
         //force the input type to hidden. Doing it here since there is an event on type change
@@ -79,7 +79,7 @@ module.exports = InputView.extend({
         };
         
         if (this.collection && this.collection.isCollection) {
-            this.renderCollection(this.collection, this._initializeCollectionSubview, '.radio-buttons', viewOptions);
+            this.renderCollection(this.collection, this.ButtonView, '.radio-buttons', viewOptions);
         } else {
             for(var i = 0; i < this.buttons.length; i++) {
                 this.renderSubview(new this.ButtonView(assign(viewOptions, {
@@ -102,16 +102,6 @@ module.exports = InputView.extend({
 
     radioClickHandler: function(e) {
         this.inputValue = e.target.value;
-    },
-    
-    _initializeCollectionSubview: function(config) {
-        var view = new this.ButtonView(config);
-        
-        if (view.checked) {
-            this.inputValue = view.value;
-        }
-        
-        return view;
     }
 });
 

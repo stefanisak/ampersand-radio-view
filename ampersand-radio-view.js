@@ -5,7 +5,7 @@ var assign = require('lodash.assign');
 //an internally used view that is used to draw each radio button
 var ButtonView = View.extend({
     template:
-        '<div><input type="radio"><span data-hook="text"></span></div>',
+        '<label><input type="radio"><span data-hook="text"></span></label>',
     props: {
         text: ['string', true, ''],
         checked: ['boolean', false, false],
